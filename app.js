@@ -2,6 +2,7 @@ const cron = require("node-cron");
 const nodemailer = require("nodemailer");
 const express = require("express");
 let bodyParser = require("body-parser");
+const request = require("request");
 
 const app = express();
 app.use(bodyParser.json());
@@ -26,7 +27,43 @@ app.get("/", (req, res) => {
   });
 });
 
-app.post("/webhook", (req, res) => res.sendStatus(200));
+// app.post("/webhook", (req, res) => res.sendStatus(200));
+app.post("/webhook", (req, res) => {
+  let reply_token = req.body.events[0].replyToken;
+  reply(reply_token);
+  res.sendStatus(200);
+});
+
+function reply(reply_token) {
+  let headers = {
+    "Content-Type": "application/json",
+    Authorization:
+      "Bearer {+Jluk+0Jh1HKrO4NEmPglPNQTqAXQVw98SsUGs0COxT9aYalPQ4FoV+j8bM1j2GvTnLIRcD3LgD9kio3B8LIeFBN3G4zB8HPTmEWJWJtgBU7zQigXVDfbbGGASiZquhax4lsD0afXOy2HMleH3LZ0wdB04t89/1O/w1cDnyilFU=}",
+  };
+  let body = JSON.stringify({
+    replyToken: reply_token,
+    messages: [
+      {
+        type: "text",
+        text: "Hello",
+      },
+      {
+        type: "text",
+        text: "How are you?",
+      },
+    ],
+  });
+  request.post(
+    {
+      url: "https://api.line.me/v2/bot/message/reply",
+      headers: headers,
+      body: body,
+    },
+    (err, res, body) => {
+      console.log("status = " + res.statusCode);
+    }
+  );
+}
 
 //Email schedules code comes here
 cron.schedule("0 0 0 * * *", () => {
