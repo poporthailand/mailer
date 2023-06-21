@@ -26,6 +26,8 @@ app.get("/", (req, res) => {
   });
 });
 
+app.get("/webhook", (req, res) => res.sendStatus(200));
+
 //Email schedules code comes here
 cron.schedule("0 0 0 * * *", () => {
   console.log("runs in every second");
