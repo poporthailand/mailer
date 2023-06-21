@@ -38,7 +38,7 @@ function reply(reply_token) {
   let headers = {
     "Content-Type": "application/json",
     Authorization:
-      "Bearer {+Jluk+0Jh1HKrO4NEmPglPNQTqAXQVw98SsUGs0COxT9aYalPQ4FoV+j8bM1j2GvTnLIRcD3LgD9kio3B8LIeFBN3G4zB8HPTmEWJWJtgBU7zQigXVDfbbGGASiZquhax4lsD0afXOy2HMleH3LZ0wdB04t89/1O/w1cDnyilFU=}",
+      "+Jluk+0Jh1HKrO4NEmPglPNQTqAXQVw98SsUGs0COxT9aYalPQ4FoV+j8bM1j2GvTnLIRcD3LgD9kio3B8LIeFBN3G4zB8HPTmEWJWJtgBU7zQigXVDfbbGGASiZquhax4lsD0afXOy2HMleH3LZ0wdB04t89/1O/w1cDnyilFU=",
   };
   let body = JSON.stringify({
     replyToken: reply_token,
