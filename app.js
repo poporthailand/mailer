@@ -53,7 +53,7 @@ app.get("/", (req, res) => {
 
 app.post("/webhook", line.middleware(config), (req, res) => {
   Promise.all(req.body.events.map(handleEvent))
-    .then((result) => res.json(result))
+    .then((result) => res.sendStatus(200))
     .catch((err) => {
       console.log(err);
       res.status(500).end();
