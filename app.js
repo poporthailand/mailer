@@ -40,7 +40,9 @@ app.get("/", (req, res) => {
   });
 });
 
-// app.post("/webhook", (req, res) => res.sendStatus(200));
+app.post("/webhook", line.middleware(config), (req, res) =>
+  res.sendStatus(200)
+);
 
 // app.post("/webhook", (req, res) => {
 //   // let reply_token = req.body.events[0].replyToken;
@@ -51,14 +53,14 @@ app.get("/", (req, res) => {
 //   res.sendStatus(200);
 // });
 
-app.post("/webhook", line.middleware(config), (req, res) => {
-  Promise.all(req.body.events.map(handleEvent))
-    .then((result) => res.sendStatus(200))
-    .catch((err) => {
-      console.log(err);
-      res.status(500).end();
-    });
-});
+// app.post("/webhook", line.middleware(config), (req, res) => {
+//   Promise.all(req.body.events.map(handleEvent))
+//     .then((result) => res.sendStatus(200))
+//     .catch((err) => {
+//       console.log(err);
+//       res.status(500).end();
+//     });
+// });
 
 function handleEvent(event) {
   console.log(event);
