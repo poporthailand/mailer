@@ -11,8 +11,9 @@ dotenv.config();
 
 const line = require("@line/bot-sdk");
 const config = {
-  channelAccessToken: process.env.channelAccessToken,
-  channelSecret: process.env.channelSecret,
+  channelAccessToken:
+    "dVC22ONSrvqP8Hi9iX+jzyP93GnR+sbHpcl7mv5VlituS0Pfi03qegoU6cbXexfK+rCDkTwC4m/6DdGi8X/uJFzOnl7eAGZWL99bFNPBjrWnKdJQAv/6xPMf1FQhqk0VscpCKLyMm+QhUBTYzz9ADwdB04t89/1O/w1cDnyilFU=",
+  channelSecret: "707dcba9b9fd0350d53aa2549ded3174",
 };
 const client = new line.Client(config);
 
